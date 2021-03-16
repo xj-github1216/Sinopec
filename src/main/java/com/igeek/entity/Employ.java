@@ -1,37 +1,45 @@
 package com.igeek.entity;
 
 public class Employ {
-    private Integer id;
+    private Integer employId;
     private String name;
+    private String username;
     private String password;
-    private Integer station_id;
     private String phone;
+    private String personId;
+    private Integer stationId;
+    private String address;
+    private String entryDate;
 
     public Employ() {
     }
 
-    public Employ(Integer id, String name, String password, Integer station_id, String phone) {
-        this.id = id;
+    public Employ(Integer employId, String name, String username, String password, String phone, String personId, Integer stationId, String address, String entryDate) {
+        this.employId = employId;
         this.name = name;
+        this.username = username;
         this.password = password;
-        this.station_id = station_id;
         this.phone = phone;
+        this.personId = personId;
+        this.stationId = stationId;
+        this.address = address;
+        this.entryDate = entryDate;
     }
 
     /**
      * 获取
-     * @return id
+     * @return employId
      */
-    public Integer getId() {
-        return id;
+    public Integer getEmployId() {
+        return employId;
     }
 
     /**
      * 设置
-     * @param id
+     * @param employId
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmployId(Integer employId) {
+        this.employId = employId;
     }
 
     /**
@@ -52,6 +60,22 @@ public class Employ {
 
     /**
      * 获取
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * 设置
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * 获取
      * @return password
      */
     public String getPassword() {
@@ -64,22 +88,6 @@ public class Employ {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * 获取
-     * @return station_id
-     */
-    public Integer getStation_id() {
-        return station_id;
-    }
-
-    /**
-     * 设置
-     * @param station_id
-     */
-    public void setStation_id(Integer station_id) {
-        this.station_id = station_id;
     }
 
     /**
@@ -98,7 +106,71 @@ public class Employ {
         this.phone = phone;
     }
 
+    /**
+     * 获取
+     * @return personId
+     */
+    public String getPersonId() {
+        return personId;
+    }
+
+    /**
+     * 设置
+     * @param personId
+     */
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    /**
+     * 获取
+     * @return stationId
+     */
+    public Integer getStationId() {
+        return stationId;
+    }
+
+    /**
+     * 设置
+     * @param stationId
+     */
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
+    }
+
+    /**
+     * 获取
+     * @return address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 设置
+     * @param address
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * 获取
+     * @return entryDate
+     */
+    public String getEntryDate() {
+        return entryDate;
+    }
+
+    /**
+     * 设置
+     * @param entryDate
+     */
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
+    }
+
     public String toString() {
-        return "Employ{id = " + id + ", name = " + name + ", password = " + password + ", station_id = " + station_id + ", phone = " + phone + "}";
+        return "Employ{employId = " + employId + ", name = " + name + ", username = " + username + ", password = " + password + ", phone = " + phone + ", personId = " + personId + ", stationId = " + stationId + ", address = " + address + ", entryDate = " + entryDate + "}";
     }
 }

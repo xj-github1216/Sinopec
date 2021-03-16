@@ -1,32 +1,35 @@
 package com.igeek.entity;
 
 public class RepairCom {
-    private Integer id;
+    private Integer repairComId;
     private String address;
-
+    private Integer masterId;
+    private String masterName;
 
     public RepairCom() {
     }
 
-    public RepairCom(Integer id, String address) {
-        this.id = id;
+    public RepairCom(Integer repairComId, String address, Integer masterId, String masterName) {
+        this.repairComId = repairComId;
         this.address = address;
+        this.masterId = masterId;
+        this.masterName = masterName;
     }
 
     /**
      * 获取
-     * @return id
+     * @return repairComId
      */
-    public Integer getId() {
-        return id;
+    public Integer getRepairComId() {
+        return repairComId;
     }
 
     /**
      * 设置
-     * @param id
+     * @param repairComId
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRepairComId(Integer repairComId) {
+        this.repairComId = repairComId;
     }
 
     /**
@@ -45,7 +48,39 @@ public class RepairCom {
         this.address = address;
     }
 
+    /**
+     * 获取
+     * @return masterId
+     */
+    public Integer getMasterId() {
+        return masterId;
+    }
+
+    /**
+     * 设置
+     * @param masterId
+     */
+    public void setMasterId(Integer masterId) {
+        this.masterId = masterId;
+    }
+
+    /**
+     * 获取
+     * @return masterName
+     */
+    public String getMasterName() {
+        return masterName;
+    }
+
+    /**
+     * 设置
+     * @param masterName
+     */
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
+    }
+
     public String toString() {
-        return "RepairCom{id = " + id + ", address = " + address + "}";
+        return "RepairCom{repairComId = " + repairComId + ", address = " + address + ", masterId = " + masterId + ", masterName = " + masterName + "}";
     }
 }

@@ -1,34 +1,36 @@
 package com.igeek.entity;
 
 public class Station {
-    private Integer id;
-    private String address;
-    private Integer count;
 
+    private Integer stationId;
+    private String address;
+    private Integer masterId;
+    private String masterName;
 
     public Station() {
     }
 
-    public Station(Integer id, String address, Integer count) {
-        this.id = id;
+    public Station(Integer stationId, String address, Integer masterId, String masterName) {
+        this.stationId = stationId;
         this.address = address;
-        this.count = count;
+        this.masterId = masterId;
+        this.masterName = masterName;
     }
 
     /**
      * 获取
-     * @return id
+     * @return stationId
      */
-    public Integer getId() {
-        return id;
+    public Integer getStationId() {
+        return stationId;
     }
 
     /**
      * 设置
-     * @param id
+     * @param stationId
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
     }
 
     /**
@@ -49,21 +51,37 @@ public class Station {
 
     /**
      * 获取
-     * @return count
+     * @return masterId
      */
-    public Integer getCount() {
-        return count;
+    public Integer getMasterId() {
+        return masterId;
     }
 
     /**
      * 设置
-     * @param count
+     * @param masterId
      */
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setMasterId(Integer masterId) {
+        this.masterId = masterId;
+    }
+
+    /**
+     * 获取
+     * @return masterName
+     */
+    public String getMasterName() {
+        return masterName;
+    }
+
+    /**
+     * 设置
+     * @param masterName
+     */
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
     }
 
     public String toString() {
-        return "Station{id = " + id + ", address = " + address + ", count = " + count + "}";
+        return "Station{stationId = " + stationId + ", address = " + address + ", masterId = " + masterId + ", masterName = " + masterName + "}";
     }
 }
