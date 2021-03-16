@@ -22,7 +22,7 @@ public class RepairServicemanServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         switch (style){
-            case "search":
+            case "searchState0":
                 //通过不同的方式搜索
                 String searchMode = request.getParameter("searchMode");
                 String keyword = request.getParameter("keyword");
@@ -39,6 +39,50 @@ public class RepairServicemanServlet extends HttpServlet {
                         PageVo<Repair> repairPageVo1 =  repairService.selectState0ById(searchMode,Integer.parseInt(keyword),1);
                         session.setAttribute("voRepairState0",repairPageVo1);
                         response.sendRedirect("backstage/serviceman/repairState0.jsp");
+                        break;
+                }
+                break;
+
+            case "searchState1":
+                //通过不同的方式搜索
+                String searchMode1 = request.getParameter("searchMode");
+                String keyword1 = request.getParameter("keyword");
+                String servicemanId = request.getParameter("servicemanId");
+                switch (searchMode1){
+                    case "faultStyle":
+                        //通过故障类型搜索
+                        PageVo<Repair> repairPageVo = repairService.selectAllState1ByServicemanIdAndFaultStyle(searchMode1,Integer.parseInt(servicemanId),keyword1,1);
+                        session.setAttribute("voRepairState1",repairPageVo);
+                        response.sendRedirect("backstage/serviceman/repairState1.jsp");
+                        break;
+
+                    case "id":
+                        //通过故障报修id搜索
+                        PageVo<Repair> repairPageVo1 =  repairService.selectState1ByServicemanIdAndId(searchMode1,Integer.parseInt(keyword1),Integer.parseInt(servicemanId),1);
+                        session.setAttribute("voRepairState1",repairPageVo1);
+                        response.sendRedirect("backstage/serviceman/repairState1.jsp");
+                        break;
+                }
+                break;
+
+            case "searchState2":
+                //通过不同的方式搜索
+                String searchMode2 = request.getParameter("searchMode");
+                String keyword2 = request.getParameter("keyword");
+                String servicemanId1 = request.getParameter("servicemanId");
+                switch (searchMode2){
+                    case "faultStyle":
+                        //通过故障类型搜索
+                        PageVo<Repair> repairPageVo = repairService.selectState2ByServicemanIdAndFaultStyle(searchMode2,keyword2,Integer.parseInt(servicemanId1),1);
+                        session.setAttribute("voRepairState2",repairPageVo);
+                        response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                        break;
+
+                    case "id":
+                        //通过故障报修id搜索
+                        PageVo<Repair> repairPageVo1 =  repairService.selectState2ByServicemanIdAndId(searchMode2,Integer.parseInt(keyword2),Integer.parseInt(servicemanId1),1);
+                        session.setAttribute("voRepairState2",repairPageVo1);
+                        response.sendRedirect("backstage/serviceman/repairState2.jsp");
                         break;
                 }
                 break;

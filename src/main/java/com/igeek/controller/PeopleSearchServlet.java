@@ -265,6 +265,54 @@ public class PeopleSearchServlet extends HttpServlet {
                         break;
                 }
                 break;
+
+            case "repairState2":
+                //运维人员故障报修界面
+                String servicemanId1 = request.getParameter("servicemanId");
+                switch (searchIndex){
+                    case "faultStyle":
+                        PageVo<Repair> repairPageVo = repairService.selectState2ByServicemanIdAndFaultStyle(searchIndex,keyword,Integer.parseInt(servicemanId1),pageNow);
+                        if (repairPageVo!=null){
+                            session.setAttribute("voRepairState2",repairPageVo);
+                            response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                        }else {
+                            response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                        }
+                        break;
+
+                    case "id":
+                        PageVo<Repair> repairPageVo1 = repairService.selectState2ByServicemanIdAndId(searchIndex,Integer.parseInt(keyword),Integer.parseInt(servicemanId1),pageNow);
+                        if (repairPageVo1!=null){
+                            session.setAttribute("voRepairState2",repairPageVo1);
+                            response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                        }else {
+                            response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                        }
+                        break;
+                }
+                break;
+
+            case "repair":
+                //管理员故障报修界面
+                RepairService repairService1 = new RepairService();
+                switch (searchIndex){
+                    case "faultStyle":
+                        PageVo<Repair> repairPageVo = repairService1.selectAllByFaultStyle(searchIndex, keyword, pageNow);
+                        session.setAttribute("repairState012PageVo",repairPageVo);
+                        response.sendRedirect("backstage/admin/repairState012.jsp");
+                        break;
+                    case "id":
+                        PageVo<Repair> repairPageVo1 = repairService1.selectAllById(searchIndex, Integer.parseInt(keyword), pageNow);
+                        session.setAttribute("repairState012PageVo",repairPageVo1);
+                        response.sendRedirect("backstage/admin/repairState012.jsp");
+                        break;
+                    case "state":
+                        PageVo<Repair> repairPageVo2 = repairService1.selectAllByState(searchIndex, keyword, pageNow);
+                        session.setAttribute("repairState012PageVo",repairPageVo2);
+                        response.sendRedirect("backstage/admin/repairState012.jsp");
+                        break;
+                }
+                break;
         }
 
     }

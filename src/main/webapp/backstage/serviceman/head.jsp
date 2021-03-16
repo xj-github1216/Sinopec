@@ -35,7 +35,7 @@
                 <li class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 故障订单管理</a>
                     <ul class="nav nav-subnav">
-                        <li> <a href="serviceBaoxiudingdan.jsp">故障订单列表</a> </li>
+                        <li> <a href="repairState2.jsp">故障订单列表</a> </li>
                     </ul>
                 </li>
             </ul>

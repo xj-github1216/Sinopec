@@ -70,6 +70,12 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("employList",employList);
                     session.setAttribute("servicemanList",servicemanList);
 
+                    //所有故障订单
+                    RepairService repairService = new RepairService();
+                    PageVo<Repair> repairState012PageVo = repairService.selectAllByFaultStyle("faultStyle", "", 1);
+                    session.setAttribute("repairState012PageVo",repairState012PageVo);
+                    List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
+                    session.setAttribute("repairDetails",repairDetails);
 
                     //登录成功
                     //request.getRequestDispatcher("backstage/admin/adminHoutaiIndex.jsp").forward(request,response);
@@ -103,6 +109,12 @@ public class LoginServlet extends HttpServlet {
                     FaultService faultService1 = new FaultService();
                     PageVo<Fault> faultPageVo1 = faultService.selectAll();
                     session.setAttribute("voFault",faultPageVo1);
+                    //报修订单
+                    PageVo<Repair> repairState12PageVo = repairService.selectState12ByEmployIdAndFaultStyle("faultStyle", "", employ.getEmployId(), 1);
+                    session.setAttribute("repairState12PageVo",repairState12PageVo);
+                    //故障明细
+                    List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
+                    session.setAttribute("repairDetails",repairDetails);
 
 
                     response.sendRedirect("backstage/employ/employHoutaiIndex.jsp");
@@ -127,8 +139,11 @@ public class LoginServlet extends HttpServlet {
                     List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
                     //所有处理中故障报修
                     PageVo<Repair> repairState1PageVo = repairService.selectAllState1ByServicemanId(serviceman.getServicemanId());
+                    //所有已处理故障报修
+                    PageVo<Repair> repairState2PageVo = repairService.selectAllState2ByServicemanId(serviceman.getServicemanId());
                     session.setAttribute("voRepairState0",repairState0PageVo);
                     session.setAttribute("voRepairState1",repairState1PageVo);
+                    session.setAttribute("voRepairState2",repairState2PageVo);
                     session.setAttribute("repairDetails",repairDetails);
                     session.setAttribute("serviceman",serviceman);
 

@@ -50,7 +50,6 @@
                 <div class="toolbar-btn-action">
                   <a class="btn btn-primary m-r-5" href="zhandianRenyuanAdd.jsp"><i class="mdi mdi-plus"></i> 新增站点员工</a>
                   <a class="btn btn-danger" onclick="checkedValues()"><i class="mdi mdi-window-close"></i> 删除站点员工</a>
-
                 </div>
               </div>
               <div class="card-body">
@@ -58,7 +57,7 @@
                 <div class="table-responsive">
                   <table class="table table-bordered" style="text-align: center">
                     <thead>
-                      <tr>
+                      <tr class="btn-secondary">
                         <th>
                           <label class="lyear-checkbox checkbox-primary">
                             <input type="checkbox" id="check-all"><span></span>

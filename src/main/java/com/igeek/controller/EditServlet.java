@@ -136,13 +136,16 @@ public class EditServlet extends HttpServlet {
                 if (b6){
                     PageVo<Repair> repairState0PageVo = service.selectAllState0();
                     PageVo<Repair> repairState1PageVo = service.selectAllState1ByServicemanId(Integer.parseInt(servicemanId));
+                    PageVo<Repair> repairState2PageVo = service.selectAllState2ByServicemanId(Integer.parseInt(servicemanId));
                     List<RepairDetail> repairDetails = service.selectState0ByRepairIdForThreeTable();
                     session.setAttribute("voRepairState0",repairState0PageVo);
                     session.setAttribute("voRepairState1",repairState1PageVo);
+                    session.setAttribute("voRepairState2",repairState2PageVo);
                     session.setAttribute("repairDetails",repairDetails);
-                    response.sendRedirect("backstage/serviceman/repairState0.jsp");
+                    response.sendRedirect("backstage/serviceman/serviceHoutaiIndex.jsp");
                 }
                 break;
+
 
         }
 

@@ -26,7 +26,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairServiceman?style=search" role="form">
+                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairServiceman?style=searchState1&servicemanId=${serviceman.servicemanId}" role="form">
                   <div class="input-group">
                     <div class="input-group-btn">
                       <input type="hidden" name="searchMode" id="search-field" value="faultStyle">
@@ -41,21 +41,13 @@
                     <input type="text" class="form-control" value="" name="keyword" placeholder="请输入查询内容" autocomplete="off">
                   </div>
                 </form>
-                <div class="toolbar-btn-action">
-                  <a class="btn btn-danger" onclick="checkedValues()"><i class="mdi mdi-window-close"></i> 批量接单</a>
-                </div>
               </div>
               <div class="card-body">
                 
                 <div class="table-responsive">
                   <table class="table table-bordered" style="text-align: center">
                     <thead>
-                      <tr>
-                        <th>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" id="check-all"><span></span>
-                          </label>
-                        </th>
+                      <tr class="btn-secondary">
                         <th style="text-align: center">id</th>
                         <th style="text-align: center">故障类型</th>
                         <th style="text-align: center">故障描述</th>
@@ -69,29 +61,24 @@
 
                     <c:forEach items="${voRepairState1.list}" var="repair">
                       <tr>
-                        <td>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" name="ids" value="${repair.id}"><span></span>
-                          </label>
-                        </td>
                         <td>${repair.id}</td>
                         <td>${repair.faultStyle}</td>
                         <td>${repair.faultDescribe}</td>
                         <td>${repair.employId}</td>
-                        <td>${repair.state}</td>
+                        <td><font class="text-info">${repair.state}</font></td>
                         <td>${repair.repairDate}</td>
                         <td>
                           <div class="btn-group">
 
                               <%--接单操作--%>
-                            <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">完成</button>
+                            <button class="btn btn-xs btn-cyan" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">完成</button>
                             <div class="modal fade" id="${repair.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="
                             margin-top: 150px">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">具体详情</h4>
+                                    <h4 class="modal-title" >具体详情</h4>
                                   </div>
                                   <div class="modal-body">
                                     <form method="post" action="${pageContext.request.contextPath}/edit?style=repairServiceman&id=${repair.id}&servicemanId=${serviceman.servicemanId}" >
@@ -168,15 +155,8 @@
                 <%-- 分页 --%>
                 <ul class="pagination" style="margin-top: 10px;margin-bottom: 10px">
 
-                  <%-- 若表中没有数据,则不可以点击上一页 --%>
-                  <c:if test="${voRepairState1.list.size()==0}">
-                    <li class="disabled">
-                      <a href="JavaScript:void(0)"><span>«</span></a>
-                    </li>
-                  </c:if>
-
                   <%-- 若在第一页，则不可以点击上一页 --%>
-                  <c:if test="${voRepairState1.pageNow == 1}">
+                  <c:if test="${voRepairState1.pageNow == 1 || voRepairState1.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)"><span>«</span></a>
                     </li>
@@ -250,17 +230,5 @@ $(function(){
 });
 </script>
 
-<script type="text/javascript">
-  function checkedValues(){
-    var arr=[];
-    var checkbox=document.getElementsByName("ids");
-    for(var i=0;i<checkbox.length;i++){
-      if(checkbox[i].checked===true){
-        arr.push(checkbox[i].value);
-      }
-    }
-    window.location.href="${pageContext.request.contextPath}/delete?style=multiple&deleteStyle=repairServiceman&ids="+arr;
-  }
-</script>
 </body>
 </html>

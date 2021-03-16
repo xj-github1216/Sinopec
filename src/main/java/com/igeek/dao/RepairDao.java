@@ -162,8 +162,100 @@ public class RepairDao extends BaseDao<Repair> {
     }
     //通过servicemanId查询所有已处理故障报修总数(运维人员)
     public int selectState2ByServicemanIdCount(Integer servicemanId) throws SQLException {
-        Long o = (Long)this.getSingleValue("select count(*) from repair where state like '已处理' and servicemanId=?",
-                Repair.class, servicemanId);
+        Long o = (Long)this.getSingleValue("select count(*) from repair where state like '已处理' and servicemanId=?", servicemanId);
+        return o.intValue();
+    }
+
+
+    //通过faultStyle、servicemanId查询所有已处理故障报修(运维人员)
+    public List<Repair> selectState2ByServicemanIdAndFaultStyle(String faultStyle,Integer servicemanId,Integer begin) throws SQLException {
+        List<Repair> list = this.getBeanList("select * from repair where state like '已处理' and faultStyle like concat('%',?,'%') and servicemanId=? limit ?,9",
+                Repair.class, faultStyle, servicemanId, begin);
+        return list;
+    }
+    //通过faultStyle、servicemanId查询所有已处理故障报修总数(运维人员)
+    public int selectState2ByServicemanIdAndFaultStyleCount(String faultStyle,Integer servicemanId) throws SQLException {
+        Long o = (Long)this.getSingleValue("select count(*) from repair where state like '已处理' and faultStyle like concat('%',?,'%') and servicemanId=? ",
+                faultStyle, servicemanId);
+        return o.intValue();
+    }
+
+
+    //通过id、servicemanId查询所有已处理故障报修(运维人员)
+    public Repair selectState2ByServicemanIdAndId(Integer id,Integer servicemanId,Integer begin) throws SQLException {
+        Repair bean = this.getBean("select * from repair where state like '已处理' and servicemanId=? and id=? limit ?,9",
+                Repair.class, servicemanId, id, begin);
+        return bean;
+    }
+
+
+    //通过employId和故障类型查询所有处理中和已处理的故障报修(站点人员)
+    public List<Repair> selectState12ByEmployIdAndFaultStyle(Integer employId,String faultStyle,Integer begin) throws SQLException {
+        List<Repair> list = this.getBeanList("select * from repair where employId=? and faultStyle like concat('%',?,'%') and state not like '未处理' limit ?,9 ",
+                Repair.class, employId, faultStyle, begin);
+        return list;
+    }
+    //通过employId和故障类型查询所有处理中和已处理的故障报修总数(站点人员)
+    public int selectState12ByEmployIdAndFaultStyleCount(Integer employId,String faultStyle) throws SQLException {
+        Long o = (Long)this.getSingleValue("select count(*) from repair where employId=? and faultStyle like concat('%',?,'%') and state not like '未处理' ",
+                employId, faultStyle);
+        return o.intValue();
+    }
+
+
+    //通过repairId和employId查询处理中或已处理的故障报修(站点人员)
+    public Repair selectState12ByEmployIdAndId(Integer employId,Integer id,Integer begin) throws SQLException {
+        Repair repair = this.getBean("select * from repair where employId=? and id=? and state not like '未处理' limit ?,9",
+                Repair.class, employId, id, begin);
+        return repair;
+    }
+
+
+    //通过state和employId查询故障报修(站点人员)
+    public List<Repair> selectByEmployIdAndState(String state,Integer employId,Integer begin) throws SQLException {
+        List<Repair> list = this.getBeanList("select * from repair where employId=? and state like concat('%',?,'%') limit ?,9",
+                Repair.class, employId, state, begin);
+        return list;
+    }
+    //通过state和employId查询故障报修总数(站点人员)
+    public int  selectByEmployIdAndStateCount(String state,Integer employId) throws SQLException {
+        Long o = (Long)this.getSingleValue("select count(*) from repair where employId=? and state like concat('%',?,'%')",
+                employId, state);
+        return o.intValue();
+    }
+
+
+    //根据故障类型查询所有故障报修订单(管理员)
+    public List<Repair> selectAllByFaultStyle(String faultStyle,Integer begin) throws SQLException {
+        List<Repair> list = this.getBeanList("select * from repair where faultStyle like concat('%',?,'%') limit ?,9",
+                Repair.class, faultStyle, begin);
+        return list;
+    }
+    //根据故障类型查询所有故障报修订单总数
+    public int selectAllByFaultStyleCount(String faultStyle) throws SQLException {
+        Long o = (Long)this.getSingleValue("select count(*) from repair where faultStyle like concat('%',?,'%')",
+                faultStyle);
+        return o.intValue();
+    }
+
+
+    //通过id查询所有故障报修
+    public Repair selectAllById(Integer id,Integer begin) throws SQLException {
+        Repair repair = this.getBean("select * from repair where id=? limit ?,9",
+                Repair.class, id, begin);
+        return repair;
+    }
+
+
+    //通过故障状态查询
+    public List<Repair> selectAllByState(String state,Integer begin) throws SQLException {
+        List<Repair> list = this.getBeanList("select * from repair where state like concat('%',?,'%') limit ?,9",
+                Repair.class, state, begin);
+        return list;
+    }
+    //通过故障状态查询总数
+    public int selectAllByStateCount(String state) throws SQLException {
+        Long o = (Long)this.getSingleValue("select count(*) from repair where state like concat('%',?,'%')", state);
         return o.intValue();
     }
 

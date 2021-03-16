@@ -49,7 +49,7 @@
                 <li class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-settings-box"></i> 故障报修管理</a>
                     <ul class="nav nav-subnav">
-                        <li> <a href="guzhangbaoxiu.jsp">故障报修列表</a> </li>
+                        <li> <a href="repairState012.jsp">故障报修列表</a> </li>
                     </ul>
                 </li>
             </ul>

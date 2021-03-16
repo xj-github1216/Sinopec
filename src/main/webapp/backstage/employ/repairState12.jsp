@@ -26,7 +26,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairServiceman?style=searchState0" role="form">
+                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairEmploy?style=searchState12&employId=${employ.employId}" role="form">
                   <div class="input-group">
                     <div class="input-group-btn">
                       <input type="hidden" name="searchMode" id="search-field" value="faultStyle">
@@ -36,6 +36,7 @@
                       <ul class="dropdown-menu">
                         <li> <a tabindex="-1" href="javascript:void(0)" data-field="faultStyle">故障类型</a> </li>
                         <li> <a tabindex="-1" href="javascript:void(0)" data-field="id">Id</a> </li>
+                        <li> <a tabindex="-1" href="javascript:void(0)" data-field="state">处理状态</a> </li>
                       </ul>
                     </div>
                     <input type="text" class="form-control" value="" name="keyword" placeholder="请输入查询内容" autocomplete="off">
@@ -51,35 +52,39 @@
                         <th style="text-align: center">id</th>
                         <th style="text-align: center">故障类型</th>
                         <th style="text-align: center">故障描述</th>
-                        <th style="text-align: center">站点人员id</th>
                         <th style="text-align: center">处理状态</th>
+                        <th style="text-align: center">运维人员id</th>
                         <th style="text-align: center">报修日期</th>
                         <th style="text-align: center">操作</th>
                       </tr>
                     </thead>
                     <tbody>
 
-
-                    <c:forEach items="${voRepairState0.list}" var="repair">
+                    <c:forEach items="${repairState12PageVo.list}" var="repair">
                       <tr>
                         <td>${repair.id}</td>
                         <td>${repair.faultStyle}</td>
                         <td>${repair.faultDescribe}</td>
-                        <td>${repair.employId}</td>
-                        <td><font class="text-danger">${repair.state}</font></td>
+                        <c:if test="${repair.state == '已处理'}">
+                          <td><font class="text-success">${repair.state}</font></td>
+                        </c:if>
+                        <c:if test="${repair.state == '处理中'}">
+                          <td><font class="text-info">${repair.state}</font></td>
+                        </c:if>
+                        <td>${repair.servicemanId}</td>
                         <td>${repair.repairDate}</td>
                         <td>
                           <div class="btn-group">
 
                               <%--接单操作--%>
-                            <button class="btn btn-xs btn-cyan" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">接单</button>
+                            <button class="btn btn-xs btn-cyan" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">详情</button>
                             <div class="modal fade" id="${repair.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="
                             margin-top: 150px">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">具体详情</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">具体详情</h4>
                                   </div>
                                   <div class="modal-body">
                                     <form method="post" action="${pageContext.request.contextPath}/edit?style=repairServiceman&id=${repair.id}&servicemanId=${serviceman.servicemanId}" >
@@ -101,14 +106,14 @@
                                               <td><input type="text" name="repairDate" class="form-control" value="${detail.repairDate}" disabled="disabled"></td>
                                             </tr>
                                             <tr>
-                                              <td><label  class="control-label">站点人员id</label></td>
-                                              <td><input type="text" name="employId" class="form-control" value="${detail.employId}" disabled="disabled"></td>
-                                              <td><label  class="control-label">站点人员姓名</label></td>
-                                              <td><input type="text" name="employName" class="form-control" value="${detail.employName}" disabled="disabled"></td>
+                                              <td><label  class="control-label">运维人员id</label></td>
+                                              <td><input type="text" name="employId" class="form-control" value="${detail.servicemanId}" disabled="disabled"></td>
+                                              <td><label  class="control-label">运维人员姓名</label></td>
+                                              <td><input type="text" name="employName" class="form-control" value="${detail.servicemanName}" disabled="disabled"></td>
                                             </tr>
                                             <tr>
-                                              <td><label  class="control-label">站点人员电话</label></td>
-                                              <td><input type="text" name="employPhone" class="form-control" value="${detail.employPhone}" disabled="disabled"></td>
+                                              <td><label  class="control-label">运维人员电话</label></td>
+                                              <td><input type="text" name="employPhone" class="form-control" value="${detail.servicemanPhone}" disabled="disabled"></td>
                                               <td><label class="control-label">站点id</label></td>
                                               <td><input type="text" name="stationId" class="form-control" value="${detail.stationId}" disabled="disabled"></td>
                                             </tr>
@@ -116,12 +121,7 @@
                                               <td><label class="control-label">站点地址</label></td>
                                               <td><input type="text" name="stationAddress" class="form-control" value="${detail.stationAddress}" disabled="disabled"></td>
                                               <td><label class="control-label">处理状态</label></td>
-                                              <td><select name="state">
-                                                <option value="未处理">请选择处理状态</option>
-                                                <option value="未处理">未处理</option>
-                                                <option value="处理中">处理中</option>
-                                                <option value="已处理">已处理</option>
-                                              </select></td>
+                                              <td><input type="text" name="state" class="form-control" value="${detail.state}" disabled="disabled"></td>
                                             </tr>
                                             <%-- 接单框表格渲染结束 --%>
 
@@ -132,7 +132,6 @@
 
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="submit" class="btn btn-primary" >接单</button>
                                       </div>
 
                                     </form>
@@ -157,47 +156,47 @@
                 <ul class="pagination" style="margin-top: 10px;margin-bottom: 10px">
 
                   <%-- 若在第一页，则不可以点击上一页 --%>
-                  <c:if test="${voRepairState0.pageNow == 1}">
+                  <c:if test="${repairState12PageVo.pageNow == 1 || repairState12PageVo.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)"><span>«</span></a>
                     </li>
                   </c:if>
 
                   <%-- 若不在第一页，则可以点击上一页 --%>
-                  <c:if test="${voRepairState0.pageNow != 1}">
+                  <c:if test="${repairState12PageVo.pageNow != 1}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState0&searchIndex=${voRepairState0.style}&keyword=${voRepairState0.value}&pageNow=${voRepairState0.pageNow-1}">«</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow-1}&servicemanId=${serviceman.servicemanId}">«</a>
                     </li>
                   </c:if>
 
                   <%-- 中间页迭代 --%>
-                  <c:forEach begin="1" end="${voRepairState0.myPages}" var="page">
+                  <c:forEach begin="1" end="${repairState12PageVo.myPages}" var="page">
 
                     <%--若当前页pageNow正好是page，则显示被点击的状态--%>
-                    <c:if test="${voRepairState0.pageNow == page}">
+                    <c:if test="${repairState12PageVo.pageNow == page}">
                       <li class="active">
                         <a href="JavaScript:void(0)">${page}</a>
                       </li>
                     </c:if>
 
                     <%--若当前页pageNow不是page，则显示可以点击的状态--%>
-                    <c:if test="${voRepairState0.pageNow != page}">
-                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState0&searchIndex=${voRepairState0.style}&keyword=${voRepairState0.value}&pageNow=${page}">${page}</a></li>
+                    <c:if test="${repairState12PageVo.pageNow != page}">
+                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${page}&servicemanId=${serviceman.servicemanId}">${page}</a></li>
                     </c:if>
 
                   </c:forEach>
 
                   <%--若在最后一页，则不可以点击下一页--%>
-                  <c:if test="${voRepairState0.pageNow == voRepairState0.myPages}">
+                  <c:if test="${repairState12PageVo.pageNow == repairState12PageVo.myPages || repairState12PageVo.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)">»</a>
                     </li>
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${voRepairState0.pageNow != voRepairState0.myPages}">
+                  <c:if test="${repairState12PageVo.pageNow != repairState12PageVo.myPages}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState0&searchIndex=${voRepairState0.style}&keyword=${voRepairState0.value}&pageNow=${voRepairState0.pageNow+1}">»</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
                     </li>
                   </c:if>
 
@@ -231,17 +230,5 @@ $(function(){
 });
 </script>
 
-<script type="text/javascript">
-  function checkedValues(){
-    var arr=[];
-    var checkbox=document.getElementsByName("ids");
-    for(var i=0;i<checkbox.length;i++){
-      if(checkbox[i].checked===true){
-        arr.push(checkbox[i].value);
-      }
-    }
-    window.location.href="${pageContext.request.contextPath}/delete?style=multiple&deleteStyle=repairServiceman&ids="+arr;
-  }
-</script>
 </body>
 </html>

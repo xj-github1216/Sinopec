@@ -26,7 +26,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairEmploy?style=search" role="form">
+                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairEmploy?style=searchState0" role="form">
                   <div class="input-group">
                     <div class="input-group-btn">
                       <input type="hidden" name="searchMode" id="search-field" value="faultStyle">
@@ -52,7 +52,7 @@
                 <div class="table-responsive">
                   <table class="table table-bordered" style="text-align: center">
                     <thead>
-                      <tr>
+                      <tr class="btn-secondary">
                         <th>
                           <label class="lyear-checkbox checkbox-primary">
                             <input type="checkbox" id="check-all"><span></span>

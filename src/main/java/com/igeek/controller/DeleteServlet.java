@@ -97,6 +97,16 @@ public class DeleteServlet extends HttpServlet {
                             response.sendRedirect("backstage/serviceman/repairState0.jsp");
                         }
                         break;
+
+                    case "repairAdmin":
+                        RepairService repairService2 = new RepairService();
+                        boolean b8 = repairService2.deleteById(Integer.parseInt(id));
+                        if (b8){
+                            PageVo<Repair> faultStyle = repairService2.selectAllByFaultStyle("faultStyle", "", 1);
+                            session.setAttribute("repairState012PageVo",faultStyle);
+                            response.sendRedirect("backstage/admin/repairState012.jsp");
+                        }
+                        break;
                 }
                 break;
 
@@ -244,6 +254,28 @@ public class DeleteServlet extends HttpServlet {
                             PageVo<Repair> repairPageVo = repairService1.selectAllState0();
                             session.setAttribute("voRepairState0",repairPageVo);
                             response.sendRedirect("backstage/serviceman/repairState0.jsp");
+                        }
+                        break;
+
+                    case "repairAdmin":
+                        String stringIddddddds = request.getParameter("ids");
+                        //获得的ids是一个字符串,需要将字符串切割
+                        String[] idddddddds = stringIddddddds.split(",");
+                        RepairService repairService2 = new RepairService();
+                        int flag7 = 0;
+                        for (String s : idddddddds) {
+                            boolean b = repairService2.deleteById(Integer.parseInt(s));
+                            if (b){
+                                flag7++;
+                            }
+                        }
+                        if (flag7 == idddddddds.length){
+                            //说明全部删除
+                            PageVo<Repair> repairPageVo = repairService2.selectAllByFaultStyle("faultStyle","",1);
+                            List<RepairDetail> repairDetails = repairService2.selectState0ByRepairIdForThreeTable();
+                            session.setAttribute("repairDetails",repairDetails);
+                            session.setAttribute("repairState012PageVo",repairPageVo);
+                            response.sendRedirect("backstage/admin/repairState012.jsp");
                         }
                         break;
 

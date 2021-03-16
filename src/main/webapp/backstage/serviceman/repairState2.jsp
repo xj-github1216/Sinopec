@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>故障报修管理</title>
+<title>故障订单管理</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/materialdesignicons.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairServiceman?style=search" role="form">
+                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/repairServiceman?style=searchState2&servicemanId=${serviceman.servicemanId}" role="form">
                   <div class="input-group">
                     <div class="input-group-btn">
                       <input type="hidden" name="searchMode" id="search-field" value="faultStyle">
@@ -41,21 +41,13 @@
                     <input type="text" class="form-control" value="" name="keyword" placeholder="请输入查询内容" autocomplete="off">
                   </div>
                 </form>
-                <div class="toolbar-btn-action">
-                  <a class="btn btn-danger" onclick="checkedValues()"><i class="mdi mdi-window-close"></i> 批量接单</a>
-                </div>
               </div>
               <div class="card-body">
                 
                 <div class="table-responsive">
                   <table class="table table-bordered" style="text-align: center">
                     <thead>
-                      <tr>
-                        <th>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" id="check-all"><span></span>
-                          </label>
-                        </th>
+                      <tr class="btn-secondary">
                         <th style="text-align: center">id</th>
                         <th style="text-align: center">故障类型</th>
                         <th style="text-align: center">故障描述</th>
@@ -67,24 +59,19 @@
                     </thead>
                     <tbody>
 
-                    <c:forEach items="${voRepairState1.list}" var="repair">
+                    <c:forEach items="${voRepairState2.list}" var="repair">
                       <tr>
-                        <td>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" name="ids" value="${repair.id}"><span></span>
-                          </label>
-                        </td>
                         <td>${repair.id}</td>
                         <td>${repair.faultStyle}</td>
                         <td>${repair.faultDescribe}</td>
                         <td>${repair.employId}</td>
-                        <td>${repair.state}</td>
+                        <td><font class="text-success">${repair.state}</font></td>
                         <td>${repair.repairDate}</td>
                         <td>
                           <div class="btn-group">
 
                               <%--接单操作--%>
-                            <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">完成</button>
+                            <button class="btn btn-xs btn-cyan" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">详情</button>
                             <div class="modal fade" id="${repair.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="
                             margin-top: 150px">
                               <div class="modal-dialog" role="document">
@@ -128,12 +115,7 @@
                                               <td><label class="control-label">站点地址</label></td>
                                               <td><input type="text" name="stationAddress" class="form-control" value="${detail.stationAddress}" disabled="disabled"></td>
                                               <td><label class="control-label">处理状态</label></td>
-                                              <td><select name="state">
-                                                <option value="处理中">请选择处理状态</option>
-                                                <option value="未处理">未处理</option>
-                                                <option value="处理中">处理中</option>
-                                                <option value="已处理">已处理</option>
-                                              </select></td>
+                                              <td><input type="text" name="state" class="form-control" value="${detail.state}" disabled="disabled"></td>
                                             </tr>
                                             <%-- 接单框表格渲染结束 --%>
 
@@ -144,7 +126,6 @@
 
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="submit" class="btn btn-primary" >确定</button>
                                       </div>
 
                                     </form>
@@ -168,55 +149,48 @@
                 <%-- 分页 --%>
                 <ul class="pagination" style="margin-top: 10px;margin-bottom: 10px">
 
-                  <%-- 若表中没有数据,则不可以点击上一页 --%>
-                  <c:if test="${voRepairState1.list.size()==0}">
-                    <li class="disabled">
-                      <a href="JavaScript:void(0)"><span>«</span></a>
-                    </li>
-                  </c:if>
-
                   <%-- 若在第一页，则不可以点击上一页 --%>
-                  <c:if test="${voRepairState1.pageNow == 1}">
+                  <c:if test="${voRepairState2.pageNow == 1 || voRepairState2.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)"><span>«</span></a>
                     </li>
                   </c:if>
 
                   <%-- 若不在第一页，则可以点击上一页 --%>
-                  <c:if test="${voRepairState1.pageNow != 1}">
+                  <c:if test="${voRepairState2.pageNow != 1}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState1&searchIndex=${voRepairState1.style}&keyword=${voRepairState1.value}&pageNow=${voRepairState1.pageNow-1}&servicemanId=${serviceman.servicemanId}">«</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${voRepairState2.style}&keyword=${voRepairState2.value}&pageNow=${voRepairState2.pageNow-1}&servicemanId=${serviceman.servicemanId}">«</a>
                     </li>
                   </c:if>
 
                   <%-- 中间页迭代 --%>
-                  <c:forEach begin="1" end="${voRepairState1.myPages}" var="page">
+                  <c:forEach begin="1" end="${voRepairState2.myPages}" var="page">
 
                     <%--若当前页pageNow正好是page，则显示被点击的状态--%>
-                    <c:if test="${voRepairState1.pageNow == page}">
+                    <c:if test="${voRepairState2.pageNow == page}">
                       <li class="active">
                         <a href="JavaScript:void(0)">${page}</a>
                       </li>
                     </c:if>
 
                     <%--若当前页pageNow不是page，则显示可以点击的状态--%>
-                    <c:if test="${voRepairState1.pageNow != page}">
-                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState1&searchIndex=${voRepairState1.style}&keyword=${voRepairState1.value}&pageNow=${page}&servicemanId=${serviceman.servicemanId}">${page}</a></li>
+                    <c:if test="${voRepairState2.pageNow != page}">
+                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${voRepairState2.style}&keyword=${voRepairState2.value}&pageNow=${page}&servicemanId=${serviceman.servicemanId}">${page}</a></li>
                     </c:if>
 
                   </c:forEach>
 
                   <%--若在最后一页，则不可以点击下一页--%>
-                  <c:if test="${voRepairState1.pageNow == voRepairState1.myPages}">
+                  <c:if test="${voRepairState2.pageNow == voRepairState2.myPages || voRepairState2.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)">»</a>
                     </li>
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${voRepairState1.pageNow != voRepairState1.myPages}">
+                  <c:if test="${voRepairState2.pageNow != voRepairState2.myPages}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState1&searchIndex=${voRepairState1.style}&keyword=${voRepairState1.value}&pageNow=${voRepairState1.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${voRepairState2.style}&keyword=${voRepairState2.value}&pageNow=${voRepairState2.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
                     </li>
                   </c:if>
 
@@ -250,17 +224,5 @@ $(function(){
 });
 </script>
 
-<script type="text/javascript">
-  function checkedValues(){
-    var arr=[];
-    var checkbox=document.getElementsByName("ids");
-    for(var i=0;i<checkbox.length;i++){
-      if(checkbox[i].checked===true){
-        arr.push(checkbox[i].value);
-      }
-    }
-    window.location.href="${pageContext.request.contextPath}/delete?style=multiple&deleteStyle=repairServiceman&ids="+arr;
-  }
-</script>
 </body>
 </html>

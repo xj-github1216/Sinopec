@@ -11,11 +11,14 @@ public class RepairDetail {
     private String stationAddress;
     private String repairDate;
     private String state;
+    private Integer servicemanId;
+    private String servicemanName;
+    private String servicemanPhone;
 
     public RepairDetail() {
     }
 
-    public RepairDetail(Integer id, String faultStyle, String faultDescribe, Integer employId, String employName, String employPhone, Integer stationId, String stationAddress, String repairDate, String state) {
+    public RepairDetail(Integer id, String faultStyle, String faultDescribe, Integer employId, String employName, String employPhone, Integer stationId, String stationAddress, String repairDate, String state, Integer servicemanId, String servicemanName, String servicemanPhone) {
         this.id = id;
         this.faultStyle = faultStyle;
         this.faultDescribe = faultDescribe;
@@ -26,6 +29,9 @@ public class RepairDetail {
         this.stationAddress = stationAddress;
         this.repairDate = repairDate;
         this.state = state;
+        this.servicemanId = servicemanId;
+        this.servicemanName = servicemanName;
+        this.servicemanPhone = servicemanPhone;
     }
 
     /**
@@ -188,7 +194,55 @@ public class RepairDetail {
         this.state = state;
     }
 
+    /**
+     * 获取
+     * @return servicemanId
+     */
+    public Integer getServicemanId() {
+        return servicemanId;
+    }
+
+    /**
+     * 设置
+     * @param servicemanId
+     */
+    public void setServicemanId(Integer servicemanId) {
+        this.servicemanId = servicemanId;
+    }
+
+    /**
+     * 获取
+     * @return servicemanName
+     */
+    public String getServicemanName() {
+        return servicemanName;
+    }
+
+    /**
+     * 设置
+     * @param servicemanName
+     */
+    public void setServicemanName(String servicemanName) {
+        this.servicemanName = servicemanName;
+    }
+
+    /**
+     * 获取
+     * @return servicemanPhone
+     */
+    public String getServicemanPhone() {
+        return servicemanPhone;
+    }
+
+    /**
+     * 设置
+     * @param servicemanPhone
+     */
+    public void setServicemanPhone(String servicemanPhone) {
+        this.servicemanPhone = servicemanPhone;
+    }
+
     public String toString() {
-        return "RepairDetail{id = " + id + ", faultStyle = " + faultStyle + ", faultDescribe = " + faultDescribe + ", employId = " + employId + ", employName = " + employName + ", employPhone = " + employPhone + ", stationId = " + stationId + ", stationAddress = " + stationAddress + ", repairDate = " + repairDate + ", state = " + state + "}";
+        return "RepairDetail{id = " + id + ", faultStyle = " + faultStyle + ", faultDescribe = " + faultDescribe + ", employId = " + employId + ", employName = " + employName + ", employPhone = " + employPhone + ", stationId = " + stationId + ", stationAddress = " + stationAddress + ", repairDate = " + repairDate + ", state = " + state + ", servicemanId = " + servicemanId + ", servicemanName = " + servicemanName + ", servicemanPhone = " + servicemanPhone + "}";
     }
 }

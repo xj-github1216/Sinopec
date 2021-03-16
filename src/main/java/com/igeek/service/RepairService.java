@@ -296,4 +296,181 @@ public class RepairService {
     }
 
 
+    //通过servicemanId查询所有已处理故障报修(运维人员)
+    public PageVo<Repair> selectAllState2ByServicemanId(Integer servicemanId){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectState2ByServicemanIdCount(servicemanId);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int pageNow = 1;
+            List<Repair> list = dao.selectState2ByServicemanId(servicemanId,0);
+            vo = new PageVo<>("faultStyle",null,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+    //通过faultStyle、servicemanId查询所有已处理故障报修(运维人员)
+    public PageVo<Repair> selectState2ByServicemanIdAndFaultStyle(String style,String faultStyle,Integer servicemanId,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectState2ByServicemanIdAndFaultStyleCount(faultStyle,servicemanId);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int begin = (pageNow-1)*9;
+            List<Repair> list = dao.selectState2ByServicemanIdAndFaultStyle(faultStyle,servicemanId,begin);
+            vo = new PageVo<>(style,faultStyle,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+    //通过id、servicemanId查询所有已处理故障报修(运维人员)
+    public PageVo<Repair> selectState2ByServicemanIdAndId(String style,Integer id,Integer servicemanId,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            Repair repair = dao.selectState2ByServicemanIdAndId(id, servicemanId, 0);
+            List<Repair> list = new ArrayList<>();
+            list.add(repair);
+            vo = new PageVo<>(style,id+"",pageNow,1,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+
+    //通过employId和故障类型查询所有处理中和已处理的故障报修(站点人员)
+    public PageVo<Repair> selectState12ByEmployIdAndFaultStyle(String style,String faultStyle,Integer employId,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectState12ByEmployIdAndFaultStyleCount(employId,faultStyle);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int begin = (pageNow-1)*9;
+            List<Repair> list = dao.selectState12ByEmployIdAndFaultStyle(employId,faultStyle,begin);
+            vo = new PageVo<>(style,faultStyle,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+    //通过repairId和employId查询处理中或已处理的故障报修(站点人员)
+    public PageVo<Repair> selectState12ByEmployIdAndId(String style,Integer id,Integer employId,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            Repair repair = dao.selectState12ByEmployIdAndId(employId,id,0);
+            List<Repair> list = new ArrayList<>();
+            list.add(repair);
+            vo = new PageVo<>(style,id+"",pageNow,1,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+    //通过state和employId查询故障报修(站点人员)
+    public PageVo<Repair> selectRepairByEmployIdAndState(String style,String state,Integer employId,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectByEmployIdAndStateCount(state,employId);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int begin = (pageNow-1)*9;
+            List<Repair> list = dao.selectByEmployIdAndState(state,employId,begin);
+            vo = new PageVo<>(style,state,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+    //根据故障类型查询所有故障报修订单(管理员)
+    public PageVo<Repair> selectAllByFaultStyle(String style,String faultStyle,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectAllByFaultStyleCount(faultStyle);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int begin = (pageNow-1)*9;
+            List<Repair> list = dao.selectAllByFaultStyle(faultStyle,begin);
+            vo = new PageVo<>(style,faultStyle,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+
+    //通过id查询所有故障报修
+    public PageVo<Repair> selectAllById(String style,Integer id,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            Repair repair = dao.selectAllById(id,0);
+            List<Repair> list = new ArrayList<>();
+            list.add(repair);
+            vo = new PageVo<>(style,id+"",pageNow,1,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
+
+    //通过故障状态查询
+    public PageVo<Repair> selectAllByState(String style,String state,Integer pageNow){
+        PageVo<Repair> vo = null;
+        try {
+
+            int counts = dao.selectAllByStateCount(state);
+            int myPages = (int)(counts%9==0?counts/9:Math.ceil(counts/9.0));
+            int begin = (pageNow-1)*9;
+            List<Repair> list = dao.selectAllByState(state,begin);
+            vo = new PageVo<>(style,state,pageNow,myPages,list);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return vo;
+    }
+
 }

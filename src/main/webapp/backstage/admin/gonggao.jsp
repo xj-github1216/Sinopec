@@ -51,7 +51,7 @@
                 <div class="table-responsive">
                   <table class="table table-bordered">
                     <thead>
-                      <tr>
+                      <tr class="btn-secondary">
                         <th>
                           <label class="lyear-checkbox checkbox-primary">
                             <input type="checkbox" id="check-all"><span></span>

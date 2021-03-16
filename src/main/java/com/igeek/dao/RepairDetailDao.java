@@ -11,9 +11,9 @@ public class RepairDetailDao extends BaseDao<RepairDetail> {
         List<RepairDetail> list = this.getBeanList("select r.id 'id',r.faultStyle 'faultStyle'," +
                 "r.faultDescribe 'faultDescribe',r.employId 'employId',e.`name` 'employName'," +
                 "e.phone 'employPhone',e.stationId 'stationId',s.address 'stationAddress'," +
-                "r.repairDate 'repairDate',r.state 'state'" +
-                "from repair r,employ e,station s where r.employId=e.employId " +
-                "and e.stationId=s.stationId", RepairDetail.class);
+                "r.repairDate 'repairDate',r.state 'state',p.servicemanId 'servicemanId',p.name 'servicemanName',p.phone 'servicemanPhone'" +
+                "from repair r,employ e,station s, serviceman p where r.employId=e.employId " +
+                "and e.stationId=s.stationId and r.servicemanId=p.servicemanId", RepairDetail.class);
         return list;
     }
 }
