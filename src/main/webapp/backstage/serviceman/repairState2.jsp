@@ -188,7 +188,7 @@
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${voRepairState2.pageNow != voRepairState2.myPages}">
+                  <c:if test="${voRepairState2.pageNow != voRepairState2.myPages && voRepairState2.list.size()!=0}">
                     <li>
                       <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${voRepairState2.style}&keyword=${voRepairState2.value}&pageNow=${voRepairState2.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
                     </li>

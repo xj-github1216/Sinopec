@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>表单 - 光年(Light Year Admin)后台管理系统模板</title>
+<title>公告信息</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/materialdesignicons.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 				  <div class="form-group">
 				    <label class="col-xs-12" for="example-text-input">发布时间</label>
 				    <div class="col-xs-12">
-				      <input class="form-control js-datepicker m-b-10" type="text" id="example-datepicker" name="releaseDate" placeholder="发布时间..." data-date-format="yyyy-mm-dd"/>
+				      <input class="form-control js-datepicker m-b-10" type="text" id="example-datepicker" name="releaseDate" placeholder="发布时间..." data-date-format="yyyy-mm-dd" autocomplete="off"/>
 				    </div>
 				  </div>
 				  

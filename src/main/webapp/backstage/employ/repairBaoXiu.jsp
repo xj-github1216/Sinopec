@@ -78,7 +78,7 @@
                         <td>${repair.id}</td>
                         <td>${repair.faultStyle}</td>
                         <td>${repair.faultDescribe}</td>
-                        <td>${repair.state}</td>
+                        <td><font class="text-danger">${repair.state}</font></td>
                         <td>${repair.repairDate}</td>
                         <td>
                           <div class="btn-group">
@@ -179,14 +179,14 @@
                   </c:forEach>
 
                   <%--若在最后一页，则不可以点击下一页--%>
-                  <c:if test="${voRepairUnprocess.pageNow == voRepairUnprocess.myPages}">
+                  <c:if test="${voRepairUnprocess.pageNow == voRepairUnprocess.myPages || voRepairUnprocess.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)">»</a>
                     </li>
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${voRepairUnprocess.pageNow != voRepairUnprocess.myPages}">
+                  <c:if test="${voRepairUnprocess.pageNow != voRepairUnprocess.myPages && voRepairUnprocess.list.size()!=0}">
                     <li>
                       <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairByEmployId&employId=${employ.employId}&searchIndex=${voRepairUnprocess.style}&keyword=${voRepairUnprocess.value}&pageNow=${voRepairUnprocess.pageNow+1}">»</a>
                     </li>

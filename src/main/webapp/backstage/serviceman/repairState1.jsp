@@ -187,14 +187,14 @@
                   </c:forEach>
 
                   <%--若在最后一页，则不可以点击下一页--%>
-                  <c:if test="${voRepairState1.pageNow == voRepairState1.myPages}">
+                  <c:if test="${voRepairState1.pageNow == voRepairState1.myPages || voRepairState1.list.size()==0}">
                     <li class="disabled">
                       <a href="JavaScript:void(0)">»</a>
                     </li>
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${voRepairState1.pageNow != voRepairState1.myPages}">
+                  <c:if test="${voRepairState1.pageNow != voRepairState1.myPages && voRepairState1.list.size()!=0}">
                     <li>
                       <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState1&searchIndex=${voRepairState1.style}&keyword=${voRepairState1.value}&pageNow=${voRepairState1.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
                     </li>

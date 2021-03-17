@@ -197,9 +197,9 @@ public class PeopleSearchServlet extends HttpServlet {
                         PageVo<Repair> repairPageVo = repairService.selectState0ByEmployIdByFaultStyle(searchIndex, keyword, Integer.parseInt(employId), pageNow);
                         if (repairPageVo!=null){
                             session.setAttribute("voRepairUnprocess",repairPageVo);
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }else {
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }
                         break;
 
@@ -207,9 +207,9 @@ public class PeopleSearchServlet extends HttpServlet {
                         PageVo<Repair> repairPageVo1 = repairService.selectState0ByEmployIdById(searchIndex, Integer.parseInt(keyword), Integer.parseInt(employId), pageNow);
                         if (repairPageVo1!=null){
                             session.setAttribute("voRepairUnprocess",repairPageVo1);
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }else {
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }
                         break;
                 }
@@ -310,6 +310,32 @@ public class PeopleSearchServlet extends HttpServlet {
                         PageVo<Repair> repairPageVo2 = repairService1.selectAllByState(searchIndex, keyword, pageNow);
                         session.setAttribute("repairState012PageVo",repairPageVo2);
                         response.sendRedirect("backstage/admin/repairState012.jsp");
+                        break;
+                }
+                break;
+
+            case "repairState12":
+                //站点人员故障订单界面
+                String employId1 = request.getParameter("employId");
+                switch (searchIndex){
+                    case "faultStyle":
+                        PageVo<Repair> repairPageVo = repairService.selectState12ByEmployIdAndFaultStyle(searchIndex,keyword,Integer.parseInt(employId1),pageNow);
+                        if (repairPageVo!=null){
+                            session.setAttribute("repairState12PageVo",repairPageVo);
+                            response.sendRedirect("backstage/employ/repairState12.jsp");
+                        }else {
+                            response.sendRedirect("backstage/employ/repairState12.jsp");
+                        }
+                        break;
+
+                    case "id":
+                        PageVo<Repair> repairPageVo1 = repairService.selectState12ByEmployIdAndId(searchIndex,Integer.parseInt(keyword),Integer.parseInt(employId1),pageNow);
+                        if (repairPageVo1!=null){
+                            session.setAttribute("repairState12PageVo",repairPageVo1);
+                            response.sendRedirect("backstage/employ/repairState12.jsp");
+                        }else {
+                            response.sendRedirect("backstage/employ/repairState12.jsp");
+                        }
                         break;
                 }
                 break;

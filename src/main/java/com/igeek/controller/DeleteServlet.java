@@ -84,7 +84,7 @@ public class DeleteServlet extends HttpServlet {
                         if (b6){
                             PageVo<Repair> repairPageVo = repairService.selectState0ByEmployId(Integer.parseInt(employId));
                             session.setAttribute("voRepairUnprocess",repairPageVo);
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }
                         break;
 
@@ -233,7 +233,7 @@ public class DeleteServlet extends HttpServlet {
                             //说明全部删除
                             PageVo<Repair> repairPageVo = repairService.selectState0ByEmployId(Integer.parseInt(employId));
                             session.setAttribute("voRepairUnprocess",repairPageVo);
-                            response.sendRedirect("backstage/employ/repairState0.jsp");
+                            response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                         }
                         break;
 

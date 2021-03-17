@@ -120,9 +120,9 @@ public class EditServlet extends HttpServlet {
                 if (b5){
                     PageVo<Repair> repairPageVo = repairService.selectState0ByEmployId(Integer.parseInt(employId));
                     session.setAttribute("voRepairUnprocess",repairPageVo);
-                    response.sendRedirect("backstage/employ/repairState0.jsp");
+                    response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                 }else {
-                    response.sendRedirect("backstage/employ/repairState0.jsp");
+                    response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                 }
                 break;
 

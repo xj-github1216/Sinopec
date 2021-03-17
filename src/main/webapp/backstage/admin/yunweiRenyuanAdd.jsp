@@ -77,7 +77,7 @@
 				      	<select name="repair_id" id="repair_id">
 							<option value="">请选择运维公司编号</option>
 							<c:forEach items="${repairComList}" var="repairCom">
-								<option value="${repairCom.id}">${repairCom.id}</option>
+								<option value="${repairCom.repairComId}">${repairCom.repairComId}</option>
 							</c:forEach>
 						</select>
 						<%--<input class="form-control" type="text" id="repair_id" name="repair_id" placeholder="请输入运维公司编号">--%>
@@ -92,9 +92,9 @@
 						</div>
 					</div>
 
-					<!-- 发布时间 -->
+					<!-- 入职日期 -->
 					<div class="form-group">
-						<label class="col-xs-12" for="entryDate">发布时间</label>
+						<label class="col-xs-12" for="entryDate">入职日期</label>
 						<div class="col-xs-12">
 							<input class="form-control js-datepicker m-b-10" type="text" id="entryDate" name="entryDate" placeholder="请输入入职时间" data-date-format="yyyy-mm-dd" autocomplete="off"/>
 						</div>

@@ -165,7 +165,7 @@
                   <%-- 若不在第一页，则可以点击上一页 --%>
                   <c:if test="${repairState12PageVo.pageNow != 1}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow-1}&servicemanId=${serviceman.servicemanId}">«</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState12&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow-1}&employId=${employ.employId}">«</a>
                     </li>
                   </c:if>
 
@@ -181,7 +181,7 @@
 
                     <%--若当前页pageNow不是page，则显示可以点击的状态--%>
                     <c:if test="${repairState12PageVo.pageNow != page}">
-                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${page}&servicemanId=${serviceman.servicemanId}">${page}</a></li>
+                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState12&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${page}&employId=${employ.employId}">${page}</a></li>
                     </c:if>
 
                   </c:forEach>
@@ -194,9 +194,9 @@
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${repairState12PageVo.pageNow != repairState12PageVo.myPages}">
+                  <c:if test="${repairState12PageVo.pageNow != repairState12PageVo.myPages && repairState12PageVo.list.size()!=0}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState2&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow+1}&servicemanId=${serviceman.servicemanId}">»</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repairState12&searchIndex=${repairState12PageVo.style}&keyword=${repairState12PageVo.value}&pageNow=${repairState12PageVo.pageNow+1}&employId=${employ.employId}">»</a>
                     </li>
                   </c:if>
 

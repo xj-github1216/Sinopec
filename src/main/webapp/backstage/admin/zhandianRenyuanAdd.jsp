@@ -92,9 +92,9 @@
                         </div>
                     </div>
 
-                    <!-- 发布时间 -->
+                    <!-- 入职日期 -->
                     <div class="form-group">
-                        <label class="col-xs-12" for="entryDate">发布时间</label>
+                        <label class="col-xs-12" for="entryDate">入职日期</label>
                         <div class="col-xs-12">
                             <input class="form-control js-datepicker m-b-10" type="text" id="entryDate" name="entryDate" placeholder="请输入入职时间" data-date-format="yyyy-mm-dd" autocomplete="off"/>
                         </div>

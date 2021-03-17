@@ -37,7 +37,7 @@ public class repairEmployServlet extends HttpServlet {
                     List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
                     session.setAttribute("repairDetails",repairDetails);
 
-                    response.sendRedirect("backstage/employ/repairState0.jsp");
+                    response.sendRedirect("backstage/employ/repairBaoXiu.jsp");
                 }
                 break;
 
