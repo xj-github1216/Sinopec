@@ -27,7 +27,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/peopleSearch?people=admin" role="form">
+                <form class="pull-right search-bar" method="post" action="${pageContext.request.contextPath}/peopleSearch?people=employ" role="form">
                   <div class="input-group">
                     <div class="input-group-btn">
                       <input type="hidden" name="peopleStyle" value="notice"/>
@@ -44,10 +44,6 @@
                     <input type="text" class="form-control" name="keyword" placeholder="请输入查询内容" autocomplete="off">
                   </div>
                 </form>
-                <div class="toolbar-btn-action">
-                  <a class="btn btn-primary m-r-5" href="gonggaoAdd.jsp"><i class="mdi mdi-plus"></i> 添加公告</a>
-                  <a class="btn btn-danger" onclick="checkedValues()"><i class="mdi mdi-window-close"></i> 删除公告</a>
-                </div>
               </div>
               <div class="card-body">
                 
@@ -92,13 +88,13 @@
                           <div class="btn-group">
 
                               <%--编辑操作--%>
-                            <a class="btn btn-xs btn-default" data-toggle="modal" data-target="#${notice.id}" data-whatever="@mdo" title="修改"><i class="mdi mdi-pencil"></i></a>
+                            <button class="btn btn-xs btn-label btn-info" data-toggle="modal" data-target="#${notice.id}" data-whatever="@mdo"><label><i class="mdi mdi-eye"></i></label>查看</button>
                             <div class="modal fade" id="${notice.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="margin-top: 150px">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">编辑</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">查看</h4>
                                   </div>
                                   <div class="modal-body">
                                     <form method="post" action="${pageContext.request.contextPath}/edit?style=notice&id=${notice.id}&people=admin" >
@@ -113,18 +109,17 @@
                                         </tr>
                                         <tr>
                                           <td><label class="control-label">公告标题</label></td>
-                                          <td><input type="text" name="title" class="form-control" value="${notice.title}" ></td>
+                                          <td><input type="text" name="title" class="form-control" value="${notice.title}" disabled="disabled" ></td>
                                         </tr>
                                         <tr>
                                           <td><label  class="control-label">公告内容</label></td>
-                                          <td><input type="text" name="content" class="form-control" value="${notice.content}"></td>
+                                          <td><input type="text" name="content" class="form-control" value="${notice.content}" disabled="disabled"></td>
                                         </tr>
 
                                       </table>
 
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="submit" class="btn btn-primary" >确定</button>
                                       </div>
 
                                     </form>
@@ -135,7 +130,6 @@
                             </div>
                               <%--编辑结束--%>
 
-                            <a class="btn btn-xs btn-default" href="${pageContext.request.contextPath}/delete?style=single&deleteStyle=notice&id=${notice.id}" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
                           </div>
                         </td>
                       </tr>
@@ -159,7 +153,7 @@
                   <%-- 若不在第一页，则可以点击上一页 --%>
                   <c:if test="${noticePageVo.pageNow != 1}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow-1}&people=admin">«</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow-1}&people=employ">«</a>
                     </li>
                   </c:if>
 
@@ -175,7 +169,7 @@
 
                     <%--若当前页pageNow不是page，则显示可以点击的状态--%>
                     <c:if test="${noticePageVo.pageNow != page}">
-                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${page}">${page}</a></li>
+                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${page}&people=employ">${page}</a></li>
                     </c:if>
 
                   </c:forEach>
@@ -190,7 +184,7 @@
                   <%--若不在最后一页，则可以点击下一页--%>
                   <c:if test="${noticePageVo.pageNow != noticePageVo.myPages && noticePageVo.list.size()!=0}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow+1}">»</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow+1}&people=employ">»</a>
                     </li>
                   </c:if>
 

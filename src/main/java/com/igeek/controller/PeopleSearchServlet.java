@@ -339,6 +339,102 @@ public class PeopleSearchServlet extends HttpServlet {
                         break;
                 }
                 break;
+
+            case "notice":
+                //公告查询
+                NoticeService noticeService = new NoticeService();
+                String people = request.getParameter("people");
+                switch (searchIndex){
+                    case "title":
+                        PageVo<Notice> noticePageVo = noticeService.selectByTitle(searchIndex, keyword, pageNow);
+                        if (noticePageVo!=null){
+                            session.setAttribute("noticePageVo",noticePageVo);
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }else {
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }
+                        break;
+                    case "id":
+                        PageVo<Notice> noticePageVo1 = noticeService.selectById(searchIndex, Integer.parseInt(keyword), pageNow);
+                        if (noticePageVo1!=null){
+                            session.setAttribute("noticePageVo",noticePageVo1);
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }else {
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }
+                        break;
+                    case "releaseDate":
+                        PageVo<Notice> noticePageVo2 = noticeService.selectByReleaseDate(searchIndex, keyword, pageNow);
+                        if (noticePageVo2!=null){
+                            session.setAttribute("noticePageVo",noticePageVo2);
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }else {
+                            switch (people){
+                                case "admin":
+                                    response.sendRedirect("backstage/admin/gonggao.jsp");
+                                    break;
+                                case "employ":
+                                    response.sendRedirect("backstage/employ/gonggao.jsp");
+                                    break;
+                                case "serviceman":
+                                    response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                                    break;
+                            }
+                        }
+                        break;
+
+                }
+                break;
         }
 
     }

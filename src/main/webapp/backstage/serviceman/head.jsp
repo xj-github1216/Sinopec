@@ -22,7 +22,7 @@
                 <li class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 公告信息管理</a>
                     <ul class="nav nav-subnav">
-                        <li> <a href="serviceGonggao.jsp">公告信息列表</a> </li>
+                        <li> <a href="gonggao.jsp">公告信息列表</a> </li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-has-subnav">

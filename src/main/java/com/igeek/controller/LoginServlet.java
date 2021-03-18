@@ -77,6 +77,11 @@ public class LoginServlet extends HttpServlet {
                     List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
                     session.setAttribute("repairDetails",repairDetails);
 
+                    //公告信息
+                    NoticeService noticeService = new NoticeService();
+                    PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                    session.setAttribute("noticePageVo",noticePageVo);
+
                     //登录成功
                     //request.getRequestDispatcher("backstage/admin/adminHoutaiIndex.jsp").forward(request,response);
                     response.sendRedirect("backstage/admin/adminHoutaiIndex.jsp");
@@ -115,6 +120,10 @@ public class LoginServlet extends HttpServlet {
                     //故障明细
                     List<RepairDetail> repairDetails = repairService.selectState0ByRepairIdForThreeTable();
                     session.setAttribute("repairDetails",repairDetails);
+                    //公告信息
+                    NoticeService noticeService = new NoticeService();
+                    PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                    session.setAttribute("noticePageVo",noticePageVo);
 
 
                     response.sendRedirect("backstage/employ/employHoutaiIndex.jsp");
@@ -146,6 +155,10 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("voRepairState2",repairState2PageVo);
                     session.setAttribute("repairDetails",repairDetails);
                     session.setAttribute("serviceman",serviceman);
+                    //公告信息
+                    NoticeService noticeService = new NoticeService();
+                    PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                    session.setAttribute("noticePageVo",noticePageVo);
 
                     response.sendRedirect("backstage/serviceman/serviceHoutaiIndex.jsp");
                 }else {

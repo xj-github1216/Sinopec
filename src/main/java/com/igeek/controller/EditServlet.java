@@ -146,6 +146,29 @@ public class EditServlet extends HttpServlet {
                 }
                 break;
 
+            case "notice":
+                String title = request.getParameter("title");
+                String content = request.getParameter("content");
+                String people = request.getParameter("people");
+                NoticeService noticeService = new NoticeService();
+                boolean b7 = noticeService.update(title, content, Integer.parseInt(id));
+                if (b7){
+                    PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                    session.setAttribute("noticePageVo",noticePageVo);
+                    switch (people){
+                        case "admin":
+                            response.sendRedirect("backstage/admin/gonggao.jsp");
+                            break;
+                        case "employ":
+                            response.sendRedirect("backstage/employ/gonggao.jsp");
+                            break;
+                        case "serviceman":
+                            response.sendRedirect("backstage/serviceman/gonggao.jsp");
+                            break;
+                    }
+                }
+                break;
+
 
         }
 

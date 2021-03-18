@@ -107,6 +107,16 @@ public class DeleteServlet extends HttpServlet {
                             response.sendRedirect("backstage/admin/repairState012.jsp");
                         }
                         break;
+
+                    case "notice":
+                        NoticeService noticeService = new NoticeService();
+                        boolean b = noticeService.deleteById(Integer.parseInt(id));
+                        if (b){
+                            PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                            session.setAttribute("noticePageVo",noticePageVo);
+                            response.sendRedirect("backstage/admin/gonggao.jsp");
+                        }
+                        break;
                 }
                 break;
 
@@ -276,6 +286,26 @@ public class DeleteServlet extends HttpServlet {
                             session.setAttribute("repairDetails",repairDetails);
                             session.setAttribute("repairState012PageVo",repairPageVo);
                             response.sendRedirect("backstage/admin/repairState012.jsp");
+                        }
+                        break;
+
+                    case "notice":
+                        String stringIdddddddds = request.getParameter("ids");
+                        //获得的ids是一个字符串,需要将字符串切割
+                        String[] iddddddddds = stringIdddddddds.split(",");
+                        NoticeService noticeService = new NoticeService();
+                        int flag8 = 0;
+                        for (String s : iddddddddds) {
+                            boolean b = noticeService.deleteById(Integer.parseInt(s));
+                            if (b){
+                                flag8++;
+                            }
+                        }
+                        if (flag8 == iddddddddds.length){
+                            //说明全部删除
+                            PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
+                            session.setAttribute("noticePageVo",noticePageVo);
+                            response.sendRedirect("backstage/admin/gonggao.jsp");
                         }
                         break;
 

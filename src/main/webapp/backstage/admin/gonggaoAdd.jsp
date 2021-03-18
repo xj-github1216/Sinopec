@@ -50,7 +50,7 @@
 				  <div class="form-group">
 				    <label class="col-xs-12" for="example-file-input">相关附件</label>
 				    <div class="col-xs-12">
-				      <input type="file" id="example-file-input" name="file">
+				      <input type="file" id="example-file-input" name="file" placeholder="一经上传不可修改！">
 				    </div>
 				  </div>
 				  
@@ -62,7 +62,7 @@
 				    </div>
 				  </div>
 				  
-                  <div class="example-box" align="center">
+                  <div class="example-box" align="center" style="margin-right: 375px">
                     <button class="btn btn-w-md btn-round btn-success" type="submit">立即提交</button>
                     <button class="btn btn-w-md btn-round btn-info" type="reset">重置</button>
                   </div>
