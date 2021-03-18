@@ -175,7 +175,7 @@
 
                     <%--若当前页pageNow不是page，则显示可以点击的状态--%>
                     <c:if test="${noticePageVo.pageNow != page}">
-                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${page}">${page}</a></li>
+                      <li><a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${page}&people=admin">${page}</a></li>
                     </c:if>
 
                   </c:forEach>
@@ -190,7 +190,7 @@
                   <%--若不在最后一页，则可以点击下一页--%>
                   <c:if test="${noticePageVo.pageNow != noticePageVo.myPages && noticePageVo.list.size()!=0}">
                     <li>
-                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow+1}">»</a>
+                      <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=notice&searchIndex=${noticePageVo.style}&keyword=${noticePageVo.value}&pageNow=${noticePageVo.pageNow+1}&people=admin">»</a>
                     </li>
                   </c:if>
 
