@@ -55,16 +55,21 @@
         <div class="slide-ul">
             <ul class="bxslider2">
                 <li>
-                    <a href=""><img src="images/2020banner01副本3.jpg" alt=""  title="城市预测"></a>
+                    <%--2020banner01副本3.jpg--%>
+                    <a href=""><img src="images/545.png" alt=""  title="城市预测"></a>
                 </li>
                 <li>
-                    <a href=""><img src="images/2021banner01副本6.png" alt="" title="城市预测"></a>
+                    <%--2021banner01副本6.png--%>
+                    <a href=""><img src="images/989.png" alt="" title="城市预测"></a>
 
                 </li>
                 <li>
+                    <a href=""><img src="images/5566.png" alt="" title="城市预测"></a>
+                </li>
+                <%--<li>
                     <a href=""><img src="images/banner1.jpg" alt=""  title="城市预测"></a>
 
-                </li>
+                </li>--%>
             </ul>
             <div class="op_btns clearfix">
                 <a href="#" class="op_btn op_prev"><span></span></a>
@@ -98,39 +103,39 @@
                             <div class="list_lh">
                                 <ul>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">工业部门碳达峰碳中和实施路径研究在京启动</h3>
-                                        <p> 本报讯 记者赵士振报道：2月23日...                                               　
+                                        <a href="yaowen1.jsp"><img src="images/new1.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">张玉卓到集团公司驻河北企业调研</h3>
+                                        <p> 12月10日，集团公司董事长、党组...                                               　
                                         </p>
                                     </li>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">集团公司部署推进知识产权工作</h3>
-                                        <p> 集团公司总经理马永生主持，传达学习习近平总书记重要文章精神。国务院国资委科创局、国家知识产权局相关负...                                            　
+                                        <a href="yaowen2.jsp"><img src="images/new2.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">张玉卓到集团公司驻陕西内蒙古企业调研</h3>
+                                        <p> 12月8日~9日，集团公司董事长、党...                                            　
                                         </p>
                                     </li>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">张玉卓会见武汉市委书记王忠林</h3>
-                                        <p>集团公司总经理马永生、副总经理喻宝才，武汉市市长程用文、常务副市长...                                              　
+                                        <a href="yaowen3.jsp"><img src="images/new3.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">中国石化与华为技术有限公司签署战略合作协议</h3>
+                                        <p>11月9日，中国石化与华为技术有限...                                              　
                                         </p>
                                     </li>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">中国石化2020年知识产权量质齐升</h3>
-                                        <p>本报讯 记者符 慧报道：中国石化...                                              　
+                                        <a href="yaowen4.jsp"><img src="images/new4.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">张玉卓到公司驻沪部分企业调研</h3>
+                                        <p>11月4日~5日，集团公司董事长...                                              　
                                         </p>
                                     </li>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">以巡视监督助力打造作风建设金色名片</h3>
-                                        <p>“大力传承石油精神、弘扬石化传统...                                              　
+                                        <a href="yaowen5.jsp"><img src="images/new5.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">古雷炼化一体化项目首套装置中交</h3>
+                                        <p>9月28日，古雷炼化一体化项目首...                                              　
                                         </p>
                                     </li>
                                     <li>
-                                        <a href="news-ny.jsp"><img src="images/jcsj.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
-                                        <h3 class="f16 text-33 pt5 pb10">燕山石化与东方雨虹建立联合实验室</h3>
-                                        <p> 本报讯 日前，燕山石化与东方雨虹公...                                               　
+                                        <a href="yaowen6.jsp"><img src="images/new6.jpg" alt="" width="93" height="82" class="floatLeft mr15"/></a>
+                                        <h3 class="f16 text-33 pt5 pb10">总书记，我考上大学了！</h3>
+                                        <p> 2013年2月3日，习近平总书...                                               　
                                         </p>
                                     </li>
                                 </ul>
@@ -143,8 +148,8 @@
                         <div class="iabout">
                             <img src="images/sholist.jpg" alt="" width="349" height="191"/>
                             <h3 class="f18 text-33 mt15 mb10">公司简介</h3>
-                            <p>北京国润天能新能源科技股份有限公司是一家从事清洁能源技术研发、产品制造、销售、系统集成和提供终端解决</p>
-                            <a href="dongshizhang.jsp" class="amore">了解更多</a>
+                            <p> 中国石油化工集团有限公司（以下简称公司）的前身是成立于1983年7月的中国石油化工总公司。</p>
+                            <a href="dongshizhang.jsp" class="amore2">了解更多</a>
                         </div>
                     </div>
                     <div class="conea">
@@ -159,14 +164,14 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href=""><img src="images/innew.jpg" alt="" title="城市预测"></a>
+                                    <a href=""><img src="images/555.jpg" alt="" title="技术许可"></a>
                                     <div class="bx-caption">
                                         <span>产品展示</span>
                                     </div>
 
                                 </li>
                                 <li>
-                                    <a href=""><img src="images/innew.jpg" alt=""  title="城市预测"></a>
+                                    <a href=""><img src="images/989.jpg" alt=""  title="家用商品"></a>
                                     <div class="bx-caption">
                                         <span>产品展示</span>
                                     </div>
@@ -245,26 +250,26 @@
                 <h3 class="text-center f24 fb text-33">我们的伙伴</h3><br><br>
                 <div class="huobanlist">
                     <ul class="clearFloat">
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
-                        <li><a href=""><img src="images/hblist.png" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo1.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo2.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo3.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo5.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo6.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo7.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo8.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo9.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo10.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo11.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo12.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo13.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo14.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo15.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo16.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo17.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo18.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo19.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo20.jpg" alt="" width="179" height="77"/></a></li>
+                        <li><a href=""><img src="images/logo/logo21.jpg" alt="" width="179" height="77"/></a></li>
                     </ul>
                 </div>
             </div>
