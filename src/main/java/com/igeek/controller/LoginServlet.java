@@ -36,6 +36,9 @@ public class LoginServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("admin",admin);
 
+                    //将身份存入会话，过滤器用
+                    session.setAttribute("identity",identity);
+
                     //将站点人员、运维人员、故障分类存入会话
                     EmployService employService = new EmployService();
                     PageVo<Employ> voEmploy = employService.selectAll();
@@ -81,6 +84,11 @@ public class LoginServlet extends HttpServlet {
                     NoticeService noticeService = new NoticeService();
                     PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
                     session.setAttribute("noticePageVo",noticePageVo);
+                    List<Notice> notices = noticeService.selectNoticeList();
+                    session.setAttribute("notices",notices);
+
+                    //将登录成功写入session
+                    session.setAttribute("user",admin);
 
                     //登录成功
                     //request.getRequestDispatcher("backstage/admin/adminHoutaiIndex.jsp").forward(request,response);
@@ -102,6 +110,10 @@ public class LoginServlet extends HttpServlet {
                     //将用户信息存入会话
                     HttpSession session = request.getSession();
                     session.setAttribute("employ",employ);
+
+                    //将身份存入会话，过滤器用
+                    session.setAttribute("identity",identity);
+
                     //故障分类
                     FaultService faultService = new FaultService();
                     PageVo<Fault> faultPageVo = faultService.selectAll();
@@ -125,6 +137,9 @@ public class LoginServlet extends HttpServlet {
                     PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
                     session.setAttribute("noticePageVo",noticePageVo);
 
+                    //将登录成功写入session
+                    session.setAttribute("user",employ);
+
 
                     response.sendRedirect("backstage/employ/employHoutaiIndex.jsp");
                 }else {
@@ -141,6 +156,10 @@ public class LoginServlet extends HttpServlet {
                 if (serviceman!=null){
                     HttpSession session = request.getSession();
                     session.setAttribute("serviceman",serviceman);
+
+                    //将身份存入会话，过滤器用
+                    session.setAttribute("identity",identity);
+
                     //所有未处理的故障报修
                     RepairService repairService = new RepairService();
                     //所有未处理故障报修
@@ -159,6 +178,9 @@ public class LoginServlet extends HttpServlet {
                     NoticeService noticeService = new NoticeService();
                     PageVo<Notice> noticePageVo = noticeService.selectByTitle("title", "", 1);
                     session.setAttribute("noticePageVo",noticePageVo);
+
+                    //将登录成功写入session
+                    session.setAttribute("user",serviceman);
 
                     response.sendRedirect("backstage/serviceman/serviceHoutaiIndex.jsp");
                 }else {

@@ -1,7 +1,6 @@
 <%@ page import="com.igeek.vo.PageVo" %>
-<%@ page import="com.igeek.entity.Employ" %>
-<%@ page import="com.igeek.entity.Serviceman" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.igeek.entity.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh">
@@ -36,7 +35,7 @@
                     List<Employ> employList = (List<Employ>)session.getAttribute("employList");
                     List<Serviceman> servicemanList = (List<Serviceman>)session.getAttribute("servicemanList");
                   %>
-                  <p class="h3 text-white m-b-0 fa-1-5x"><%= employList.size()+servicemanList.size() %></p>
+                  <p class="h3 text-white m-b-0 fa-1-5x"><%= employList.size()+servicemanList.size() %>  人</p>
                 </div>
                 <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account-multiple fa-1-5x"></i></span> </div>
               </div>
@@ -48,7 +47,11 @@
               <div class="card-body clearfix">
                 <div class="pull-right">
                   <p class="h6 text-white m-t-0">部门总数</p>
-                  <p class="h3 text-white m-b-0 fa-1-5x"></p>
+                  <%
+                    List<Station> stationList = (List<Station>)session.getAttribute("stationList");
+                    List<RepairCom> repairComList = (List<RepairCom>)session.getAttribute("repairComList");
+                  %>
+                  <p class="h3 text-white m-b-0 fa-1-5x"><%= stationList.size()+repairComList.size() %>  个</p>
                 </div>
                 <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
               </div>
@@ -59,8 +62,11 @@
             <div class="card bg-success">
               <div class="card-body clearfix">
                 <div class="pull-right">
-                  <p class="h6 text-white m-t-0">订单总量</p>
-                  <p class="h3 text-white m-b-0 fa-1-5x">34,005,000</p>
+                  <p class="h6 text-white m-t-0">报修订单总量</p>
+                  <%
+                    List<RepairDetail> repairDetails = (List<RepairDetail>) session.getAttribute("repairDetails");
+                  %>
+                  <p class="h3 text-white m-b-0 fa-1-5x"><%= repairDetails.size() %>  单</p>
                 </div>
                 <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-arrow-down-bold fa-1-5x"></i></span> </div>
               </div>
@@ -71,8 +77,11 @@
             <div class="card bg-purple">
               <div class="card-body clearfix">
                 <div class="pull-right">
-                  <p class="h6 text-white m-t-0">新增留言</p>
-                  <p class="h3 text-white m-b-0 fa-1-5x">153 条</p>
+                  <p class="h6 text-white m-t-0">公告总量</p>
+                  <%
+                    List<Notice> notices = (List<Notice>)session.getAttribute("notices");
+                  %>
+                  <p class="h3 text-white m-b-0 fa-1-5x"><%= notices.size() %> 条</p>
                 </div>
                 <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-comment-outline fa-1-5x"></i></span> </div>
               </div>
@@ -111,7 +120,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4>项目信息</h4>
+                <h4>最新订单信息</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">

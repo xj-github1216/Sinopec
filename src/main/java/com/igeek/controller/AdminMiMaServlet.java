@@ -37,8 +37,6 @@ public class AdminMiMaServlet extends HttpServlet {
                     response.sendRedirect("backstage/admin/xiugaimima.jsp");
                 }
             }
-
-
         }
 
     }

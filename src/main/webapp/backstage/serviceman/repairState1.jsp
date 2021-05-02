@@ -70,7 +70,7 @@
                         <td>
                           <div class="btn-group">
 
-                              <%--接单操作--%>
+                              <%--完成操作--%>
                             <button class="btn btn-xs btn-cyan" data-toggle="modal" data-target="#${repair.id}" data-whatever="@mdo">完成</button>
                             <div class="modal fade" id="${repair.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="
                             margin-top: 150px">

@@ -24,8 +24,9 @@ public class AdminXinXiServlet extends HttpServlet {
         String address = request.getParameter("address");
         String email = request.getParameter("email");
 
+        //创建service对象
         AdminService service = new AdminService();
-
+        //更新数据
         boolean b = service.update(name,personId, phone, address, email);
 
         if (b){

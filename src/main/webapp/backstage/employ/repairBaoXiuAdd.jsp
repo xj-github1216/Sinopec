@@ -37,7 +37,7 @@
                       <select name="faultStyle" id="faultStyle">
 						  <option value="">请选择故障类型</option>
 						  <c:forEach items="${voFault.list}" var="fault">
-							  <option value="${fault.faultStyle}">${fault.faultStyle}</option>
+							  <option value="${fault.faultStyle}">${fault.faultStyle}  ${fault.faultContent}</option>
 						  </c:forEach>
 					  </select>
                     </div>

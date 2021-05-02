@@ -45,7 +45,7 @@
                         <select name="masterId" id="masterId">
                             <option value="">请选择站长id</option>
                             <c:forEach items="${servicemanList}" var="serviceman">
-                                <option value="${serviceman.servicemanId}">${serviceman.servicemanId}</option>
+                                <option value="${serviceman.servicemanId}">${serviceman.servicemanId}  ${serviceman.name}</option>
                             </c:forEach>
                         </select>
                         <%--<input class="form-control" type="text" id="stationId" name="stationId" placeholder="请输入站点编号">--%>

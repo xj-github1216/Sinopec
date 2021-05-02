@@ -14,9 +14,9 @@ public class ServicemanDao extends BaseDao<Serviceman> {
     }
 
     //查询单个
-    public Serviceman selectOne(String name,String password) throws SQLException {
-        Serviceman employ = this.getBean("select * from serviceman where username=? and password=?", Serviceman.class, name, password);
-        return employ;
+    public Serviceman selectOne(String username,String password) throws SQLException {
+        Serviceman serviceman = this.getBean("select * from serviceman where username=? and password=?", Serviceman.class, username, password);
+        return serviceman;
     }
 
     //插入

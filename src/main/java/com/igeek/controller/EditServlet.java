@@ -142,7 +142,18 @@ public class EditServlet extends HttpServlet {
                     session.setAttribute("voRepairState1",repairState1PageVo);
                     session.setAttribute("voRepairState2",repairState2PageVo);
                     session.setAttribute("repairDetails",repairDetails);
-                    response.sendRedirect("backstage/serviceman/serviceHoutaiIndex.jsp");
+                    switch (state){
+                        case "未处理":
+                            response.sendRedirect("backstage/serviceman/repairState0.jsp");
+                            break;
+                        case "处理中":
+                            response.sendRedirect("backstage/serviceman/repairState1.jsp");
+                            break;
+                        case "已处理":
+                            response.sendRedirect("backstage/serviceman/repairState2.jsp");
+                            break;
+                    }
+
                 }
                 break;
 
@@ -165,6 +176,8 @@ public class EditServlet extends HttpServlet {
                         case "serviceman":
                             response.sendRedirect("backstage/serviceman/gonggao.jsp");
                             break;
+                        default:
+                            response.sendRedirect("backstage/serviceman/repairState0.jsp");
                     }
                 }
                 break;

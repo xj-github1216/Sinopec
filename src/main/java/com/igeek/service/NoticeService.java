@@ -25,6 +25,19 @@ public class NoticeService {
         return false;
     }
 
+    //查询所有公告信息
+    public List<Notice> selectNoticeList(){
+        List<Notice> notices = null;
+        try {
+            notices = dao.selectAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeConn();
+        }
+        return notices;
+    }
+
     //查询所有公告信息(通过标题搜索)
     public PageVo<Notice> selectByTitle(String style,String title,Integer pageNow){
         PageVo<Notice> vo = null;

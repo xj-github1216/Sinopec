@@ -13,6 +13,12 @@ public class NoticeDao extends BaseDao<Notice> {
         return i;
     }
 
+    //查询所有公告信息
+    public List<Notice> selectAll() throws SQLException {
+        List<Notice> noticeList = this.getBeanList("select * from notice", Notice.class);
+        return noticeList;
+    }
+
     //查询所有公告信息(通过标题搜索)
     public List<Notice> selectAllByTitle(String title,Integer begin) throws SQLException {
         List<Notice> list = this.getBeanList("select * from notice where title like concat('%',?,'%') order by releaseDate desc limit ?,9",

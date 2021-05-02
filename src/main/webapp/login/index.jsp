@@ -17,7 +17,7 @@
 
     <%-- 登录失败弹出框 --%>
     <c:if test="${msg!=null}">
-        alert("用户名或者密码错误!!!");
+        alert("${msg}");
     </c:if>
 
     $(document).ready(function () {

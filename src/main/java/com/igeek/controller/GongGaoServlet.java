@@ -42,7 +42,7 @@ public class GongGaoServlet extends HttpServlet {
             //将文件信息存储到当前的notice中
             notice.setFile("/temp/"+newName);
             //将文件信息传递到本地服务器上
-            part.write("D:\\桌面文件\\毕业设计\\temp\\"+newName);
+            part.write("D:\\Desktop\\temp\\"+newName);
 
         }
 

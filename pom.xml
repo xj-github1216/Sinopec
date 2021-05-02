@@ -22,6 +22,14 @@
 <!-- 依赖 -->
   <dependencies>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>8.5.3</version>
+    </dependency>
+
+
     <dependency>
       <groupId>com.alipay.sdk</groupId>
       <artifactId>alipay-sdk-java</artifactId>

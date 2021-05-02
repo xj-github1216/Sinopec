@@ -221,7 +221,7 @@
                   </c:if>
 
                   <%--若不在最后一页，则可以点击下一页--%>
-                  <c:if test="${repairState012PageVo.pageNow != v.myPages}">
+                  <c:if test="${repairState012PageVo.pageNow != repairState012PageVo.myPages  && repairState012PageVo.list.size()!=0}">
                     <li>
                       <a href="${pageContext.request.contextPath}/peopleSearch?peopleStyle=repair&searchIndex=${repairState012PageVo.style}&keyword=${repairState012PageVo.value}&pageNow=${vrepairState012PageVo.pageNow+1}">»</a>
                     </li>
